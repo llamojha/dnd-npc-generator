@@ -1,6 +1,6 @@
 # DnD NPC Generator
 
-This is a simple web application that generates randomized NPC (Non-Player Character) names and descriptions for Dungeons and Dragons (DnD) games.
+This is a simple web application that generates randomized NPC (Non-Player Character) names, images and descriptions for Dungeons and Dragons (DnD) games.
 
 ## Getting Started
 
@@ -13,12 +13,12 @@ To run this project, you will need to have [Node.js](https://nodejs.org/) and [n
 ### Installing
 
 1. Clone the repository to your local machine using Git:
-```git clone https://github.com/yourusername/DnD-NPC-Generator.git```
+```git clone https://github.com/llamojha/dnd-npc-generator.git```
 
-2. Navigate to the project directory and install the dependencies using npm:
+2. Install the dependencies using npm:
 
 ```
-cd DnD-NPC-Generator
+cd dnd-npc-generator
 npm install
 ```
 
@@ -30,14 +30,13 @@ npm install
 
 ```npm start```
 
-
 The project should now be running on `http://localhost:3000/`.
 
 ## Built With
 
 * [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 * [Create React App](https://create-react-app.dev/) - A tool for creating React apps with no build configuration
-* [OpenAI API](https://beta.openai.com/docs/api-reference/introduction) - An artificial intelligence platform that provides APIs for natural language processing tasks
+* [OpenAI API](https://platform.openai.com/docs/api-reference) - An artificial intelligence platform that provides APIs for natural language processing tasks
 
 ## License
 
