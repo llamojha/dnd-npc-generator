@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+div {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+form {
+  background-color: var(--form-background-color);
+  color: var(--form-text-color);
+}
+
+button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --link-color: #0077cc;
+  --button-background-color: #0077cc;
+  --button-text-color: #ffffff;
+  --form-background-color: #515151;
+  --form-text-color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #333333;
+    --text-color: #ffffff;
+    --link-color: #00aaff;
+    --button-background-color: #00aaff;
+    --button-text-color: #ffffff;
+    --form-background-color: #515151;
+    --form-text-color: #ffffff;
+  }
+}

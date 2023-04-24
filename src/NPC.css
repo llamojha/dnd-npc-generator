@@ -1,0 +1,141 @@
+.npc-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 0.5rem;
+  }
+
+  .npc-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 60px;
+  }
+
+  .npc-message {
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 95%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: #fff;
+  }
+
+  .npc-message.user {
+    align-self: flex-end;
+    background-color: #0095ff;
+  }
+
+  .npc-message.assistant {
+    align-self: flex-start;
+    background-color: #8bc34a;
+  }
+
+  .npc-message code {
+    background-color: #cbcbcb;
+    color: #333;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.2rem;
+  }
+
+  .npc-message pre {
+    background-color: #cbcbcb;
+    color: #333;
+    font-size: 0.8rem;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1em;
+    border-radius: 0.5rem;
+  }
+
+  .npc-form-div {
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+  .npc-form {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1); /* Add a shadow to the npc input */
+  }
+
+  .npc-form input[type="text"] {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin-left: 1rem;
+  }
+
+  .npc-form button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    color: #fff;
+    background-color: #0095ff;
+    cursor: pointer;
+    margin: 1rem;
+  }
+
+  .npc-form button[type="button"] {
+    background-color: #8bc34a;
+    margin: 1rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .npc-messages {
+      max-height: 50vh;
+    }
+
+    .npc-message {
+      max-width: 90%;
+    }
+
+    .npc-form {
+      flex-direction: column;
+    }
+
+    .npc-form input[type="text"] {
+      margin-bottom: 1rem;
+      width: 90%;
+    }
+  }
+
+  .frame {
+    margin: 1rem;
+  }
+  .centered-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .circular-image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Ensures the image maintains its aspect ratio */
+}
+.App {
+  font-size: 16px; /* change this value to adjust the font size */
+}
+
+.text-area {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+}
