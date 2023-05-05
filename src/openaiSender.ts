@@ -4,9 +4,8 @@ const openaiSender = async (
   messages: ChatCompletionRequestMessage[]
 ): Promise<ChatCompletionRequestMessage | undefined> => {
   try {
-    const model = "gpt-4";
     //const model = "gpt-4";
-    //const model = "gpt-4-32k";
+    const model = "gpt-3.5-turbo";
     // Set up OpenAI API credentials
     const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
     if (!apiKey) {
