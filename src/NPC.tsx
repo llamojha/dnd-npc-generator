@@ -158,7 +158,7 @@ const NPC = () => {
         <label>Stats:</label>
         <textarea value={statsText} readOnly className="text-area" />
       </div>
-      <button onClick={handleDownload}>Download as PDF</button>
+      <button onClick={handleDownload} className="download-button">Download as PDF</button>
     </div>
   );
 };
