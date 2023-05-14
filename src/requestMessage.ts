@@ -6,6 +6,7 @@ export const UpdateCDKmessages: ChatCompletionRequestMessage[] = [];
 const contextPath = "./context";
 
 const requestMessage = async (
+  apiKey: string,
   context: string,
   mission: string
 ): Promise<string | undefined> => {
@@ -36,7 +37,7 @@ const requestMessage = async (
       content: fileContents.content,
     });
 
-    const message = await openaiSender(messages);
+    const message = await openaiSender(apiKey, messages);
     if (message) {
       messages.push(message);
     } else {

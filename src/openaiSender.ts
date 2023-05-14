@@ -1,13 +1,14 @@
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
 
 const openaiSender = async (
+  apiKey: string,
   messages: ChatCompletionRequestMessage[]
 ): Promise<ChatCompletionRequestMessage | undefined> => {
   try {
     //const model = "gpt-4";
     const model = "gpt-3.5-turbo";
     // Set up OpenAI API credentials
-    const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+    apiKey = process.env.REACT_APP_OPENAI_API_KEY || apiKey;
     if (!apiKey) {
       throw new Error("OpenAI API key not found.");
     } // Define the prompt for GPT-3 5x Turbo

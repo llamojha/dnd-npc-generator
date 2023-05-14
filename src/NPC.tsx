@@ -1,7 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import requestMessage from "./requestMessage";
 import openaiImage from "./openaiImage";
-import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 import "./NPC.css";
@@ -14,6 +13,8 @@ interface npcMessage {
 
 const NPC = () => {
   const [inputText, setInputText] = useState("");
+  const [inputAPIKey, setAPIKeyText] = useState("");
+  const [APIKey, setAPIKey] = useState("");
   const [backgroundText, setbackgroundText] = useState("");
   const [appearanceText, setappearanceText] = useState("");
   const [otherText, setotherText] = useState("");
@@ -23,10 +24,16 @@ const NPC = () => {
   const [alignment, setalignment] = useState("Alignment");
   const [imageUrl, setImageUrl] = useState("https://via.placeholder.com/256");
   const [npcMessages, setnpcMessages] = useState<npcMessage[]>([]);
-  const captureRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
+  };
+
+  const handleAPIKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const apiKey = e.target.value;
+    setAPIKey(apiKey);
+    const maskedInputText = "*".repeat(apiKey.length);
+    setAPIKeyText(maskedInputText);
   };
 
   const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,39 +54,39 @@ const NPC = () => {
       setnpcMessages((prevMessages) => [...prevMessages, newMessage]);
 
       // Background
-      const background = (await requestMessage(text, "background")) || null;
+      const background = (await requestMessage(APIKey, text, "background")) || null;
       if (background) {
         setbackgroundText(background);
       }
 
-      const nameOutput = (await requestMessage(text, "name")) || null;
+      const nameOutput = (await requestMessage(APIKey, text, "name")) || null;
       if (nameOutput) {
         setName(nameOutput);
       }
 
-      const raceOutput = (await requestMessage(text, "race")) || null;
+      const raceOutput = (await requestMessage(APIKey, text, "race")) || null;
       if (raceOutput) {
         setrace(raceOutput);
       }
 
-      const alignmentOutput = (await requestMessage(text, "alignment")) || null;
+      const alignmentOutput = (await requestMessage(APIKey, text, "alignment")) || null;
       if (alignmentOutput) {
         setalignment(alignmentOutput);
       }
 
-      const appearance = (await requestMessage(text, "appearance")) || null;
+      const appearance = (await requestMessage(APIKey, text, "appearance")) || null;
       if (appearance) {
         setappearanceText(appearance);
-        const url = await openaiImage(appearance);
+        const url = await openaiImage(APIKey, appearance);
         if (url !== undefined) {
           setImageUrl(url);
         }
       }
-      const other = (await requestMessage(text, "other")) || null;
+      const other = (await requestMessage(APIKey, text, "other")) || null;
       if (other) {
         setotherText(other);
       }
-      const stats = (await requestMessage(text, "stats")) || null;
+      const stats = (await requestMessage(APIKey, text, "stats")) || null;
       if (stats) {
         setstatsText(stats);
       }
@@ -97,9 +104,9 @@ const NPC = () => {
     pdf.setFontSize(12);
     pdf.text(`${backgroundText}`, 20, 70, { maxWidth: 160 });
     pdf.setFontSize(16);
-    pdf.text(`Appearance:`, 20, 170);
+    pdf.text(`Appearance:`, 20, 200);
     pdf.setFontSize(12);
-    pdf.text(`${appearanceText}`, 20, 180, { maxWidth: 160 });
+    pdf.text(`${appearanceText}`, 20, 210, { maxWidth: 160 });
     pdf.addPage();
     pdf.setFontSize(16);
     pdf.text(`Other Info:`, 20, 20);
@@ -112,13 +119,22 @@ const NPC = () => {
 
     // Open PDF in new tab
     const data = pdf.output();
-    const blob = new Blob([data], { type: 'application/pdf' });
+    const blob = new Blob([data], { type: "application/pdf" });
     const url = URL.createObjectURL(blob);
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   return (
     <div className="App">
+      <form className="apikey-form">
+        <input
+          type="text"
+          placeholder="Type your OpenAI API Key here..."
+          value={inputAPIKey}
+          onChange={handleAPIKeyChange}
+          style={{ fontSize: "16px" }}
+        />
+      </form>
       <form className="npc-form" onSubmit={handleClick}>
         <input
           type="text"
@@ -158,7 +174,9 @@ const NPC = () => {
         <label>Stats:</label>
         <textarea value={statsText} readOnly className="text-area" />
       </div>
-      <button onClick={handleDownload} className="download-button">Download as PDF</button>
+      <button onClick={handleDownload} className="download-button">
+        Download as PDF
+      </button>
     </div>
   );
 };

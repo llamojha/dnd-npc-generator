@@ -67,6 +67,26 @@
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1); /* Add a shadow to the npc input */
   }
 
+  .apikey-form {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1); /* Add a shadow to the npc input */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .apikey-form input[type="text"] {
+    flex: 0.5;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin-left: 1rem;
+  }
+
   .npc-form input[type="text"] {
     flex: 1;
     padding: 0.5rem;
