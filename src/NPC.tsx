@@ -61,17 +61,20 @@ const NPC = () => {
 
       const nameOutput = (await requestMessage(APIKey, text, "name")) || null;
       if (nameOutput) {
-        setName(nameOutput);
+        const cleaneNameOutput = nameOutput.replace(/\./g, ''); // Remove all dots
+        setName(cleaneNameOutput);
       }
 
       const raceOutput = (await requestMessage(APIKey, text, "race")) || null;
       if (raceOutput) {
-        setrace(raceOutput);
+        const cleanedRaceOutput = raceOutput.replace(/\./g, ''); // Remove all dots
+        setrace(cleanedRaceOutput);
       }
 
       const alignmentOutput = (await requestMessage(APIKey, text, "alignment")) || null;
       if (alignmentOutput) {
-        setalignment(alignmentOutput);
+        const cleanedAlignmentOutput = alignmentOutput.replace(/\./g, ''); // Remove all dots
+        setalignment(cleanedAlignmentOutput);
       }
 
       const appearance = (await requestMessage(APIKey, text, "appearance")) || null;
